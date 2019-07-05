@@ -19,6 +19,13 @@ node to stop it from hurting your efficiency. If you have a warehouse with two
 saturated inputs but only one output, then either one of the inputs is
 unnecessary, or you need to build another output.
 
+That's the first rule of conveyor abuse: **keep your end nodes saturated, and
+expand intermediate nodes to avoid bottlenecks**. Your warehouses and conveyors
+should be filling up from the outermost ones inward. **If your final warehouse
+isn't yet completely full, all the warehouses on the way to it should be
+holding exactly 0 resources, and instead immediately outputting everything that
+gets put in them.**
+
 Three resource mines saturate one conveyor. You can see this clearly in the
 gif at the top of this guide - the conveyor is connected to a single sawmill,
 and there is about two logs' worth of room between every log on it.
@@ -148,22 +155,33 @@ Here are the basic buildings you'll need to make use of:
 - **Factories**
 
   Factories are resource processors - they take in one or more resources, and
-  output something else. While using some of them is dead simple (the ones with
-  a single input and output - just dump resources into it), some take more
-  deliberation. Keep in mind the ratio at which they consume resources! If it
-  takes five of resource A and two of resource B for a factory's recipe, you'll
-  need to supply them at a 5:2 ratio - keep that in mind when building
-  conveyors. You'll need just a single coal conveyor for every five iron ore
-  conveyors when setting up iron bar smelters!
+  output something else. While using some of them is dead simple (circular
+  saws - just dump resources into it), some take more deliberation. Keep in
+  mind the ratio at which they consume resources! If it takes five of resource
+  A and two of resource B for a factory's recipe, you'll need to supply them at
+  a 5:2 ratio - keep that in mind when building conveyors. You'll need just a
+  single coal conveyor for every five iron ore conveyors when setting up iron
+  bar smelters!
+
+  The consumption and production rates for all factories seem to be around the
+  same, with a single saturated input being able to supply around six to eight
+  factories. Seven is a safe bet, because it's better to have a couple
+  underutilized factories than to create bottlenecks.
+  **Remember the first rule!**
+
+  For circular saws, this means you're concerned only with output saturation
+  rates - three circular saws making planks slightly undersaturate an output,
+  while a fourth one oversaturates it. For this reason, I recommend seven saws
+  and two output conveyors per input when making planks, and seven saws with a
+  single output conveyor per input when making wood beams.
+  For iron bar smelters, that means you'll want about five iron ore inputs,
+  thirty five smelters, and five output conveyors per coal input for maximum
+  efficiency.
 
   Speaking of smelters, they're possibly the most tricky factory to use, due to
   their T shape. Here's how I build my smelter clusters for them to be 100%
   space efficient:
   ![Smelter cluster](imgs/smeltercluster.png)
-
-  A single saturated iron ore input can supply somewhere around seven smelters.
-  For iron bars, that means you'll want five iron ore inputs and thirty five
-  smelters per coal input for maximum efficiency.
 
   Here is how to build the cluster. This is the most basic segment of the
   cluster:
